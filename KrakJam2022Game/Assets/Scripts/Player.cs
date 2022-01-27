@@ -38,8 +38,8 @@ public class Player : MonoBehaviour
         //Rotacja horyzontalna
 
         Vector3 characterScale = transform.localScale;
-        if (horizontalInput < 0) { characterScale.x = (float)-0.5; }
-        if (horizontalInput > 0) { characterScale.x = (float)0.5; }
+        if (horizontalInput < 0) { characterScale.x = Mathf.Abs(characterScale.x) * -1; }
+        if (horizontalInput > 0) { characterScale.x = Mathf.Abs(characterScale.x); }
         transform.localScale = characterScale;
     }
 
