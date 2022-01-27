@@ -6,10 +6,13 @@ public class Player : MonoBehaviour
 {
 
     public Animator animator;
-    public float movementSpeed = 3;
+    [SerializeField] private float movementSpeed = 3;
+    [SerializeField] private float jumpPower = 3f;
+    [SerializeField] private Transform groundCheckTransform = null;
 
     private Rigidbody2D rigidbodyComponent;
     private float horizontalInput;
+    private bool jumpKeyWasPressed;
      
     
 
@@ -24,16 +27,66 @@ public class Player : MonoBehaviour
         //zbieranie inputów do poruszania siê
         horizontalInput = Input.GetAxis("Horizontal");
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpKeyWasPressed = true;
+
+        }
+
+
+        //animacje skoku
+
+        if (rigidbodyComponent.velocity.y == 0)
+        {
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("isFalling", false);
+        }
+
+        if (rigidbodyComponent.velocity.y > 0)
+        {
+            animator.SetBool("IsJumping", true);
+        }
+
+        if (rigidbodyComponent.velocity.y < 0)
+        {
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("isFalling", true);
+        }
+
 
     }
 
     private void FixedUpdate()
     {
+
+        //l¹dowanie
+
+
         //poruszanie siê postaci
 
         rigidbodyComponent.velocity = new Vector2(horizontalInput * movementSpeed, rigidbodyComponent.velocity.y);
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
+
+        //skok
+
+        Debug.Log(Physics2D.OverlapCircleAll(groundCheckTransform.position, 0.1f).Length);
+
+        if (Physics2D.OverlapCircleAll(groundCheckTransform.position, 0.1f).Length == 1) 
+        {
+         
+            return;
+        }
+
+        if (jumpKeyWasPressed)
+        {
+            rigidbodyComponent.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            jumpKeyWasPressed = false;
+        }
+
+
+
+
 
         //Rotacja horyzontalna
 
