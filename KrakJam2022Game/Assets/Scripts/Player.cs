@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
 
-        //l¹dowanie
+
 
 
         //poruszanie siê postaci
@@ -67,6 +67,13 @@ public class Player : MonoBehaviour
         rigidbodyComponent.velocity = new Vector2(horizontalInput * movementSpeed, rigidbodyComponent.velocity.y);
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
+
+        //Rotacja horyzontalna
+
+        Vector3 characterScale = transform.localScale;
+        if (horizontalInput < 0) { characterScale.x = Mathf.Abs(characterScale.x) * -1; }
+        if (horizontalInput > 0) { characterScale.x = Mathf.Abs(characterScale.x); }
+        transform.localScale = characterScale;
 
         //skok
 
@@ -88,12 +95,7 @@ public class Player : MonoBehaviour
 
 
 
-        //Rotacja horyzontalna
 
-        Vector3 characterScale = transform.localScale;
-        if (horizontalInput < 0) { characterScale.x = Mathf.Abs(characterScale.x) * -1; }
-        if (horizontalInput > 0) { characterScale.x = Mathf.Abs(characterScale.x); }
-        transform.localScale = characterScale;
     }
 
 }
