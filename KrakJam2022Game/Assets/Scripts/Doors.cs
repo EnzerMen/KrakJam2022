@@ -5,7 +5,7 @@ public class Doors : Collidable
 {
     public string sceneName;
     public int keyID;
-
+    //doors
     protected override void OnCollide(Collider2D coll)
     {
         if (coll.name == "Player")
