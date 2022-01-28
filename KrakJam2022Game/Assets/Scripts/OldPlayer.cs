@@ -2,32 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class OldPlayer : MonoBehaviour
 {
 
-    //input float
-    private float moveButton;
-    private float jumpButton;
-    private string JUMPY_TAG = "JUMPY";
-    private bool canJump = true;
-    //s
-
+    public Animator animator;
+    [SerializeField] private float movementSpeed = 3;
+    [SerializeField] private float jumpPower = 3f;
+    [SerializeField] private Transform groundCheckTransform = null;
 
     private Rigidbody2D rigidbodyComponent;
     private float horizontalInput;
     private bool jumpKeyWasPressed;
-     
-    
-    //oks
+
+
+
     void Start()
     {
         rigidbodyComponent = GetComponent<Rigidbody2D>();
-        
+
     }
- 
+
     void Update()
     {
-        //zbieranie inputÃ³w do poruszania siÃª
+        //zbieranie inputów do poruszania siê
         horizontalInput = Input.GetAxis("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -41,18 +38,18 @@ public class Player : MonoBehaviour
 
         if (rigidbodyComponent.velocity.y == 0)
         {
-            animator.SetBool("IsJumping", false);
+            animator.SetBool("isJumping", false);
             animator.SetBool("isFalling", false);
         }
 
         if (rigidbodyComponent.velocity.y > 0)
         {
-            animator.SetBool("IsJumping", true);
+            animator.SetBool("isJumping", true);
         }
 
         if (rigidbodyComponent.velocity.y < 0)
         {
-            animator.SetBool("IsJumping", false);
+            animator.SetBool("isJumping", false);
             animator.SetBool("isFalling", true);
         }
 
@@ -65,7 +62,7 @@ public class Player : MonoBehaviour
 
 
 
-        //poruszanie siÃª postaci
+        //poruszanie siê postaci
 
         rigidbodyComponent.velocity = new Vector2(horizontalInput * movementSpeed, rigidbodyComponent.velocity.y);
 
@@ -82,9 +79,9 @@ public class Player : MonoBehaviour
 
         Debug.Log(Physics2D.OverlapCircleAll(groundCheckTransform.position, 0.1f).Length);
 
-        if (Physics2D.OverlapCircleAll(groundCheckTransform.position, 0.1f).Length == 1) 
+        if (Physics2D.OverlapCircleAll(groundCheckTransform.position, 0.1f).Length == 1)
         {
-         
+
             return;
         }
 
