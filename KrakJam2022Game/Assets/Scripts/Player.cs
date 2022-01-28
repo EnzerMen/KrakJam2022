@@ -2,99 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Mover
 {
+    [SerializeField] private Transform groundCheck = null;
+    float moveButton;
+    float jumpButton;
+    private bool canJump = true;
+    private bool isGrounded;
+    private string JUMP_TAG = "JUMPY";
 
-    public Animator animator;
-    [SerializeField] private float movementSpeed = 3;
-    [SerializeField] private float jumpPower = 3f;
-    [SerializeField] private Transform groundCheckTransform = null;
 
-    private Rigidbody2D rigidbodyComponent;
-    private float horizontalInput;
-    private bool jumpKeyWasPressed;
-     
-    
 
-    void Start()
+
+
+    protected virtual void LateUpdate()
     {
-        rigidbodyComponent = GetComponent<Rigidbody2D>();
-        
-    }
- 
-    void Update()
-    {
-        //zbieranie inputów do poruszania siê
-        horizontalInput = Input.GetAxis("Horizontal");
+        moveButton = Input.GetAxisRaw("Horizontal");
+        jumpButton = Input.GetAxisRaw("Jump");
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            jumpKeyWasPressed = true;
-
-        }
-
-
-        //animacje skoku
-
-        if (rigidbodyComponent.velocity.y == 0)
-        {
-            animator.SetBool("IsJumping", false);
-            animator.SetBool("isFalling", false);
-        }
-
-        if (rigidbodyComponent.velocity.y > 0)
-        {
-            animator.SetBool("IsJumping", true);
-        }
-
-        if (rigidbodyComponent.velocity.y < 0)
-        {
-            animator.SetBool("IsJumping", false);
-            animator.SetBool("isFalling", true);
-        }
-
-
+       
+        Movement();
+        AnimationUpdate(new Vector3(moveButton, rigidBody.velocity.y, 0));
+      
     }
 
-    private void FixedUpdate()
+  /*  private void OnCollisionEnter2D(Collision collision)
     {
-
-
-
-
-        //poruszanie siê postaci
-
-        rigidbodyComponent.velocity = new Vector2(horizontalInput * movementSpeed, rigidbodyComponent.velocity.y);
-
-        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
-
-        //Rotacja horyzontalna
-
-        Vector3 characterScale = transform.localScale;
-        if (horizontalInput < 0) { characterScale.x = Mathf.Abs(characterScale.x) * -1; }
-        if (horizontalInput > 0) { characterScale.x = Mathf.Abs(characterScale.x); }
-        transform.localScale = characterScale;
-
-        //skok
-
-        Debug.Log(Physics2D.OverlapCircleAll(groundCheckTransform.position, 0.1f).Length);
-
-        if (Physics2D.OverlapCircleAll(groundCheckTransform.position, 0.1f).Length == 1) 
+        if (collision.gameObject.CompareTag(JUMP_TAG))
         {
-         
-            return;
-        }
+            isGrounded = true;
 
-        if (jumpKeyWasPressed)
+        }
+    }*/
+
+
+    private void Movement()
+    {
+        //tmpJumpForce = jumpForce;
+        rigidBody.velocity = new Vector3(moveButton * movementSpeed, rigidBody.velocity.y, 0);
+
+
+        if (jumpButton == 1 && canJump)
         {
-            rigidbodyComponent.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            jumpKeyWasPressed = false;
+
+            rigidBody.AddForce(new Vector2(0, jumpButton*jumpForce), ForceMode2D.Impulse);
+            //tmpJumpForce = 0;
+            //canJump = false;
         }
-
-
-
-
-
 
     }
 
