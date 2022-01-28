@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Mover
+public class NewPlayer : Mover
 {
     [SerializeField] private Transform groundCheck = null;
     float moveButton;
