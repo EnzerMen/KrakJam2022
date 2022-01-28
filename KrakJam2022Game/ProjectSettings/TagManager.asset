@@ -3,8 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - JUMPY
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -13,8 +12,8 @@ TagManager:
   - Water
   - UI
   - MirrorWorld
-  - Player
-  - Floor
+  - 
+  - 
   - 
   - 
   - 
@@ -39,21 +38,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Reflection
-    uniqueID: 1890606685
-    locked: 0
-  - name: Background
-    uniqueID: 1120919367
-    locked: 0
-  - name: Player
-    uniqueID: 3415573905
-    locked: 0
-  - name: Foreground
-    uniqueID: 2800556965
-    locked: 0
-  - name: AtCamera
-    uniqueID: 2403352803
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
