@@ -25,16 +25,16 @@ public class NewPlayer : Mover
         AnimationUpdate(new Vector3(moveButton, rigidBody.velocity.y, 0));
       
     }
-
-  /*  private void OnCollisionEnter2D(Collision collision)
+/*
+  private override void OnCollisionEnter2D(Collision collision)
     {
         if (collision.gameObject.CompareTag(JUMP_TAG))
         {
             isGrounded = true;
 
         }
-    }*/
-
+    }
+*/
 
     private void Movement()
     {

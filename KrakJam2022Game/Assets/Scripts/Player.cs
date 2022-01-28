@@ -4,52 +4,50 @@ using UnityEngine;
 
 public class Player : Mover
 {
-    [SerializeField] private Transform groundCheck = null;
-    float moveButton;
-    float jumpButton;
+    //input float
+    private float moveButton;
+    private float jumpButton;
+    private string JUMPY_TAG = "JUMPY";
     private bool canJump = true;
-    private bool isGrounded;
-    private string JUMP_TAG = "JUMPY";
 
 
-
-
-
-    protected virtual void LateUpdate()
+    protected void FixedUpdate()
     {
         moveButton = Input.GetAxisRaw("Horizontal");
         jumpButton = Input.GetAxisRaw("Jump");
 
-       
         Movement();
-        AnimationUpdate(new Vector3(moveButton, rigidBody.velocity.y, 0));
-      
+        Jump();
+
+        //AnimationUpdate(new Vector3(0, 0, 0));
     }
 
-  /*  private void OnCollisionEnter2D(Collision collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(JUMP_TAG))
+        if (collision.gameObject.CompareTag(JUMPY_TAG))
         {
-            isGrounded = true;
-
+            canJump = true;
         }
-    }*/
+    }
 
 
-    private void Movement()
+    protected void Movement()
     {
-        //tmpJumpForce = jumpForce;
+        
         rigidBody.velocity = new Vector3(moveButton * movementSpeed, rigidBody.velocity.y, 0);
-
-
-        if (jumpButton == 1 && canJump)
-        {
-
-            rigidBody.AddForce(new Vector2(0, jumpButton*jumpForce), ForceMode2D.Impulse);
-            //tmpJumpForce = 0;
-            //canJump = false;
-        }
-
+        
+        
     }
+
+    protected void Jump()
+    {
+        if (jumpButton != 0 && canJump)
+        {
+            Debug.Log("JUMP");
+            rigidBody.AddForce(new Vector2(0, jumpButton * jumpForce), ForceMode2D.Impulse);
+            canJump = false;
+        }
+    }
+
 
 }
