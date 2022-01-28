@@ -19,7 +19,7 @@ public class Player : Mover
         Movement();
         Jump();
 
-        //AnimationUpdate(new Vector3(0, 0, 0));
+        AnimationUpdate();
     }
 
     protected void OnCollisionEnter2D(Collision2D collision)
@@ -30,12 +30,29 @@ public class Player : Mover
         }
     }
 
-
     protected void Movement()
     {
-        
-        rigidBody.velocity = new Vector3(moveButton * movementSpeed, rigidBody.velocity.y, 0);
-        
+
+        if (moveButton != 0)
+        {
+            if (canJump)
+                rigidBody.AddForce(new Vector2(moveButton * movementForce, 0), ForceMode2D.Impulse);
+            else
+            {
+                rigidBody.AddForce(new Vector2(moveButton * movementForce * airMovementForce, 0), ForceMode2D.Impulse);
+            }
+            rigidBody.velocity = new Vector3(Mathf.Clamp(rigidBody.velocity.x, -5, 5), rigidBody.velocity.y, 0);
+        }else
+        {
+            if (canJump)
+                rigidBody.AddForce(new Vector2(-rigidBody.velocity.x*slowPower, 0), ForceMode2D.Impulse);
+            else
+            {
+                rigidBody.AddForce(new Vector2(-rigidBody.velocity.x * slowPower *airMovementForce, 0), ForceMode2D.Impulse);
+            }
+        }
+
+            
         
     }
 
@@ -43,7 +60,6 @@ public class Player : Mover
     {
         if (jumpButton != 0 && canJump)
         {
-            Debug.Log("JUMP");
             rigidBody.AddForce(new Vector2(0, jumpButton * jumpForce), ForceMode2D.Impulse);
             canJump = false;
         }

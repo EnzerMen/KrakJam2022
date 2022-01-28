@@ -1846,11 +1846,6 @@ Transform:
   m_Father: {fileID: 710014001}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1272853150 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4306424281054135968, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
-  m_PrefabInstance: {fileID: 4306424281818740093}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1317454564
 GameObject:
   m_ObjectHideFlags: 0
@@ -3067,13 +3062,21 @@ PrefabInstance:
       value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 4306424280732799265, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
+      propertyPath: movementForce
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306424280732799265, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
       propertyPath: movementSpeed
-      value: 7
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306424280732799265, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
+      propertyPath: airMovementForce
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4306424280732799265, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
       propertyPath: groundCheckTransform
       value: 
-      objectReference: {fileID: 1272853150}
+      objectReference: {fileID: 0}
     - target: {fileID: 4306424280732799271, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3121,6 +3124,10 @@ PrefabInstance:
     - target: {fileID: 4306424280732799274, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
       propertyPath: m_Mass
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306424280732799274, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4306424280732799275, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
       propertyPath: m_Name

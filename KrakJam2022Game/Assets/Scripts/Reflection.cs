@@ -31,7 +31,7 @@ public class Reflection : Mover
             //sprawdz czy wystarczaj¹co blisko gracza
             if ((difference.x > 0.2f || difference.x < -0.2f) && (difference.y > 0.2f || difference.y < -0.2f))
             {
-                rigidBody.velocity = new Vector3(difference.x * movementSpeed, difference.y * movementSpeed, 0);
+                rigidBody.velocity = new Vector3(difference.x * movementForce, difference.y * movementForce, 0);
                 
             }
             else
@@ -45,7 +45,7 @@ public class Reflection : Mover
             
         }
 
-        AnimationUpdate(playerVelocity);
+        //AnimationUpdate(playerVelocity);
     }
 
     //przyklej siê do gracza
