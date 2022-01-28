@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private bool jumpKeyWasPressed;
      
     
-
+    //oks
     void Start()
     {
         rigidbodyComponent = GetComponent<Rigidbody2D>();
