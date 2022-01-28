@@ -9,7 +9,7 @@ public class Player : Mover
     private float jumpButton;
     private string JUMPY_TAG = "JUMPY";
     private bool canJump = true;
-
+    //s
 
     protected void FixedUpdate()
     {
