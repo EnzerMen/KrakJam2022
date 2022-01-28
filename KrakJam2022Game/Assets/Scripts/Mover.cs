@@ -9,14 +9,15 @@ public class Mover : MonoBehaviour
     protected Rigidbody2D rigidBody;
     protected Vector3 moveDelta;
     protected SpriteRenderer spriteRend;
-
     [SerializeField]
-    protected float movementSpeed = 6f;
+    protected float movementForce = 7f;
     [SerializeField]
-    protected float jumpForce = 2f;
-
-    protected Vector3 baseScale;
-    //animations
+    protected float jumpForce = 6.5f;
+    [SerializeField]
+    protected float airMovementForce = 0.3f;
+    [SerializeField]
+    protected float slowPower = 0.3f;
+    protected Vector3 baseScale; //used for rotating
     protected Animator animator;
     #endregion
 
@@ -29,15 +30,14 @@ public class Mover : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
-        
         baseScale = transform.localScale;
     }
 
 
-    protected virtual void AnimationUpdate(Vector3 input)
+    protected virtual void AnimationUpdate()
     {
         
-        //reset move delta
+        //set move delta, update animation based on velocity
         moveDelta = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, 0);
 
         #region swap sprite X direction and change anim bools
@@ -58,7 +58,6 @@ public class Mover : MonoBehaviour
         #endregion
 
         #region jump animation
-
         if (moveDelta.y == 0)
         {
             animator.SetBool("isJumping", false);
@@ -74,7 +73,6 @@ public class Mover : MonoBehaviour
             animator.SetBool("isJumping", false);
             animator.SetBool("isFalling", true);
         }
-
         #endregion
 
     }

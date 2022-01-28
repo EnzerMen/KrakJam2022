@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Mover
 {
-
     //input float
     private float moveButton;
     private float jumpButton;
@@ -12,93 +11,59 @@ public class Player : MonoBehaviour
     private bool canJump = true;
     //s
 
-
-    private Rigidbody2D rigidbodyComponent;
-    private float horizontalInput;
-    private bool jumpKeyWasPressed;
-     
-    
-    //oks
-    void Start()
+    protected void FixedUpdate()
     {
-        rigidbodyComponent = GetComponent<Rigidbody2D>();
+        moveButton = Input.GetAxisRaw("Horizontal");
+        jumpButton = Input.GetAxisRaw("Jump");
+
+        Movement();
+        Jump();
+
+        AnimationUpdate();
+    }
+
+    protected void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag(JUMPY_TAG))
+        {
+            canJump = true;
+        }
+    }
+
+    protected void Movement()
+    {
+
+        if (moveButton != 0)
+        {
+            if (canJump)
+                rigidBody.AddForce(new Vector2(moveButton * movementForce, 0), ForceMode2D.Impulse);
+            else
+            {
+                rigidBody.AddForce(new Vector2(moveButton * movementForce * airMovementForce, 0), ForceMode2D.Impulse);
+            }
+            rigidBody.velocity = new Vector3(Mathf.Clamp(rigidBody.velocity.x, -5, 5), rigidBody.velocity.y, 0);
+        }else
+        {
+            if (canJump)
+                rigidBody.AddForce(new Vector2(-rigidBody.velocity.x*slowPower, 0), ForceMode2D.Impulse);
+            else
+            {
+                rigidBody.AddForce(new Vector2(-rigidBody.velocity.x * slowPower *airMovementForce, 0), ForceMode2D.Impulse);
+            }
+        }
+
+            
         
     }
- 
-    void Update()
+
+    protected void Jump()
     {
-        //zbieranie inputów do poruszania siê
-        horizontalInput = Input.GetAxis("Horizontal");
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (jumpButton != 0 && canJump)
         {
-            jumpKeyWasPressed = true;
-
+            rigidBody.AddForce(new Vector2(0, jumpButton * jumpForce), ForceMode2D.Impulse);
+            canJump = false;
         }
-
-
-        //animacje skoku
-
-        if (rigidbodyComponent.velocity.y == 0)
-        {
-            animator.SetBool("IsJumping", false);
-            animator.SetBool("isFalling", false);
-        }
-
-        if (rigidbodyComponent.velocity.y > 0)
-        {
-            animator.SetBool("IsJumping", true);
-        }
-
-        if (rigidbodyComponent.velocity.y < 0)
-        {
-            animator.SetBool("IsJumping", false);
-            animator.SetBool("isFalling", true);
-        }
-
-
     }
 
-    private void FixedUpdate()
-    {
-
-
-
-
-        //poruszanie siê postaci
-
-        rigidbodyComponent.velocity = new Vector2(horizontalInput * movementSpeed, rigidbodyComponent.velocity.y);
-
-        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
-
-        //Rotacja horyzontalna
-
-        Vector3 characterScale = transform.localScale;
-        if (horizontalInput < 0) { characterScale.x = Mathf.Abs(characterScale.x) * -1; }
-        if (horizontalInput > 0) { characterScale.x = Mathf.Abs(characterScale.x); }
-        transform.localScale = characterScale;
-
-        //skok
-
-        Debug.Log(Physics2D.OverlapCircleAll(groundCheckTransform.position, 0.1f).Length);
-
-        if (Physics2D.OverlapCircleAll(groundCheckTransform.position, 0.1f).Length == 1) 
-        {
-         
-            return;
-        }
-
-        if (jumpKeyWasPressed)
-        {
-            rigidbodyComponent.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            jumpKeyWasPressed = false;
-        }
-
-
-
-
-
-
-    }
 
 }
