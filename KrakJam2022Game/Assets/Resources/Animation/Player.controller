@@ -11,8 +11,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isFalling
     m_EventTreshold: 0
-  - m_ConditionMode: 3
-    m_ConditionEvent: Speed
+  - m_ConditionMode: 1
+    m_ConditionEvent: isWalking
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4852831856255969688}
@@ -36,8 +36,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: Speed
+  - m_ConditionMode: 1
+    m_ConditionEvent: isWalking
     m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4852831856255969688}
@@ -62,7 +62,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: IsJumping
+    m_ConditionEvent: isJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7395254369707427257}
@@ -87,7 +87,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IsJumping
+    m_ConditionEvent: isJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4138605690932636514}
@@ -139,13 +139,13 @@ AnimatorController:
   m_Name: Player
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Speed
-    m_Type: 1
+  - m_Name: isWalking
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: IsJumping
+  - m_Name: isJumping
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -203,8 +203,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 4
-    m_ConditionEvent: Speed
+  - m_ConditionMode: 2
+    m_ConditionEvent: isWalking
     m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1885976984601475313}
@@ -230,6 +230,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: isFalling
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1885976984601475313}
@@ -311,10 +314,10 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -1885976984601475313}
-    m_Position: {x: 430, y: 10, z: 0}
+    m_Position: {x: 440, y: -30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4852831856255969688}
-    m_Position: {x: 430, y: 130, z: 0}
+    m_Position: {x: 440, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7395254369707427257}
     m_Position: {x: 170, y: -10, z: 0}
@@ -328,8 +331,8 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -70, y: 40, z: 0}
-  m_EntryPosition: {x: 440, y: -70, z: 0}
+  m_AnyStatePosition: {x: -80, y: 50, z: 0}
+  m_EntryPosition: {x: 460, y: -110, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -1885976984601475313}
