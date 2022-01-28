@@ -11,7 +11,7 @@ public class Collectable : Collidable
 
     protected override void OnCollide(Collider2D coll)
     {
-        if (coll.name == collectedByWho)
+        if (coll.CompareTag(collectedByWho))
         {
             OnCollect();
         }

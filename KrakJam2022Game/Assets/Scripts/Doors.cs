@@ -5,16 +5,18 @@ public class Doors : Collidable
 {
     public string sceneName;
     public int keyID;
+    [SerializeField] private string collectedByWho = "Player";
     //doors
     protected override void OnCollide(Collider2D coll)
     {
-        if (coll.name == "Player")
+        if (coll.CompareTag(collectedByWho))
         {
             //tp player
-            //GameManager.instance.SaveState();
+           
 
-            if (GameManager.instance.keyes[keyID] == 1)
+            if (GameManager.instance.hasAKey[keyID])
             {
+                GameManager.instance.usedDoorID = keyID;
                 UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
             }
         }

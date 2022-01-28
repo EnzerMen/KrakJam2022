@@ -6,6 +6,7 @@ MonoImporter:
   defaultReferences:
   - player: {fileID: 4306424280732799265, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
   - character: {fileID: 4306424280732799275, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
+  - cameraPref: {fileID: 7437665924702761461, guid: cbbe8110d6d35354eba78130df7a9871, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
