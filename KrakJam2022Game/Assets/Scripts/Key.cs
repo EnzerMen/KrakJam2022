@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Key : Collectable
 {
-    public int keyID;
+    public int itemID;
 
 
     protected override void OnCollect()
@@ -12,7 +12,7 @@ public class Key : Collectable
         if (!collected)
         {
             collected = true;
-            GameManager.instance.hasAKey[keyID] = true;
+            GameManager.instance.hasAnItem[itemID] = true;
             Destroy(gameObject);
             
 

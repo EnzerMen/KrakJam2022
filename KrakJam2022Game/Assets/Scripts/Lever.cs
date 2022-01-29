@@ -7,6 +7,8 @@ public class Lever : Collidable
     [SerializeField] private string collectedByTag = "Player";
     [SerializeField] private Movable moveThis;
     [SerializeField] private bool isToggable;
+    [SerializeField] private bool hasToHaveAnItem;
+    [SerializeField] private int requiredItemID;
 
 
 
@@ -14,18 +16,39 @@ public class Lever : Collidable
     {
         if (coll.CompareTag(collectedByTag))
         {
-            if (isToggable)
+            if (hasToHaveAnItem)
             {
-                if (Input.GetAxisRaw("Action") == 1)
+                if (GameManager.instance.hasAnItem[requiredItemID] == true)
                 {
-                    moveThis.Move();
+                    DoTrigger();
                 }
             }
             else
             {
-                moveThis.Move();
-            } 
+                DoTrigger();
+            }
+            
+            
+            
+            
+
         }
     }
 
+
+
+    protected void DoTrigger()
+    {
+        if (isToggable)
+        {
+            if (Input.GetAxisRaw("Interact") == 1)
+            {
+                moveThis.Move();
+            }
+        }
+        else
+        {
+            moveThis.Move();
+        }
+    }
 }

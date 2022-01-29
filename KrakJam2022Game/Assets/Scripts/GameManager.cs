@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject character;
     public GameObject cameraPref;
 
-    public bool [] hasAKey = new bool[10]; //czy mam klucz
+    public bool [] hasAnItem = new bool[10]; //lista przedmiotów mam/niemam
     public Vector3[] doorCoords = new Vector3[10]; //coordy po przejsciu przez drzwi
     public int usedDoorID; //ktore drzwi zostaly uzyte
    

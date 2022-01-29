@@ -4,7 +4,7 @@ using UnityEngine;
 public class Doors : Collidable
 {
     public string sceneName;
-    public int keyID;
+    public int requiredItemID;
     [SerializeField] private string collectedByWho = "Player";
     //doors
     protected override void OnCollide(Collider2D coll)
@@ -14,9 +14,9 @@ public class Doors : Collidable
             //tp player
            
 
-            if (GameManager.instance.hasAKey[keyID])
+            if (GameManager.instance.hasAnItem[requiredItemID])
             {
-                GameManager.instance.usedDoorID = keyID;
+                GameManager.instance.usedDoorID = requiredItemID;
                 UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
             }
         }
