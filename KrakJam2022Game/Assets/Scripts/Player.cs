@@ -32,10 +32,6 @@ public class Player : Mover
         }
 
         AnimationUpdate();
-
-
-        
-        
     }
 
 
@@ -117,12 +113,20 @@ public class Player : Mover
             rigidBody.velocity = new Vector3(Mathf.Clamp(rigidBody.velocity.x, -5, 5), rigidBody.velocity.y, 0);
         }else
         {
-            if (canJump)
-                rigidBody.AddForce(new Vector2(-rigidBody.velocity.x*slowPower, 0), ForceMode2D.Impulse);
+            if (Mathf.Abs(rigidBody.velocity.x) < 1)
+            {
+                rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, 0);
+            }
             else
             {
-                rigidBody.AddForce(new Vector2(-rigidBody.velocity.x * slowPower *airMovementForce, 0), ForceMode2D.Impulse);
+                if (canJump)
+                    rigidBody.AddForce(new Vector2(-rigidBody.velocity.x * slowPower, 0), ForceMode2D.Impulse);
+                else
+                {
+                    rigidBody.AddForce(new Vector2(-rigidBody.velocity.x * slowPower * airMovementForce, 0), ForceMode2D.Impulse);
+                }
             }
+
         }
 
             

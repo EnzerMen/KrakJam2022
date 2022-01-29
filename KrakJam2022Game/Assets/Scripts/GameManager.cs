@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -11,9 +12,11 @@ public class GameManager : MonoBehaviour
     public GameObject character;
     public GameObject cameraPref;
     public FloatingTextManager floatingTextManager;
+    public PopUpItemManager popUpItemManager;
     public bool canSwitch = false;
     private bool justSwitched = false;
     public bool followPlayer = true;
+    public bool timeRuns = true;
 
 
     public bool [] hasAnItem = new bool[10]; //lista przedmiotów mam/niemam
@@ -62,13 +65,30 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void ToggleTime()
+    {
+        if (timeRuns)
+        {
+            Time.timeScale = 0;
+            timeRuns = false;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            timeRuns = true;
+        }
+    }
+
 
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
     {
         floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
     }
 
-
+    public void ShowItem(string msg, int fontSize, Color color, Image img)
+    {
+        popUpItemManager.Show(msg, fontSize, color, img);
+    }
 
     private void OnEnable()
     {

@@ -8,6 +8,7 @@ TagManager:
   - DialogueActivated
   - DialogueTriggered
   - Reflection
+  - Pushable
   layers:
   - Default
   - TransparentFX

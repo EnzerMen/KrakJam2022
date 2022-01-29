@@ -19,6 +19,7 @@ public class MenuPause : MonoBehaviour
             if (!doneOnce)
             {
                 anim.SetTrigger("showPause");
+                GameManager.instance.ToggleTime();
                 doneOnce = true;
 
             }
