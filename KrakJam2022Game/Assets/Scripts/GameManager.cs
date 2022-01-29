@@ -17,9 +17,7 @@ public class GameManager : MonoBehaviour
 
 
     public bool [] hasAnItem = new bool[10]; //lista przedmiotów mam/niemam
-    public Vector3[] doorCoords = new Vector3[10]; //coordy po przejsciu przez drzwi
-    public int usedDoorID; //ktore drzwi zostaly uzyte
-   
+
     public void SwitchPlaces()
     {
         if (canSwitch)
