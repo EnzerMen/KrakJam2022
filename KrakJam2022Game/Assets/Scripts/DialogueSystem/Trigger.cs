@@ -5,11 +5,16 @@ using UnityEngine;
 public class Trigger : MonoBehaviour
 {
     [SerializeField]private GameObject dialogue;
+    private int blokada = 0;
 
     public void ActivateDialogue()
     {
-        dialogue.SetActive(true);
-        Destroy(gameObject);
+        if (blokada == 0)
+        {
+            dialogue.SetActive(true);
+            blokada++;
+        }
+       
     }
 
     public bool DialogueActive()
