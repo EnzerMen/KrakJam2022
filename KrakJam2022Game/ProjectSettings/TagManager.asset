@@ -7,6 +7,7 @@ TagManager:
   - JUMPY
   - DialogueActivated
   - DialogueTriggered
+  - Reflection
   layers:
   - Default
   - TransparentFX
@@ -14,11 +15,11 @@ TagManager:
   - 
   - Water
   - UI
-  - MirrorWorld
+  - Reflection
   - Player
   - Floor
-  - 
-  - 
+  - PlayerBlock
+  - ReflectionBlock
   - 
   - 
   - 

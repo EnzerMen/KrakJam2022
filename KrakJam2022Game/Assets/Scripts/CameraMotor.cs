@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class CameraMotor : MonoBehaviour
 {
-    private Transform lookAt;
-
+    private Transform lookAtPlayer;
+    private Transform lookAtReflection;
 
     private void Start()
     {
-        lookAt = GameObject.FindGameObjectWithTag("Player").transform;
+        lookAtPlayer = GameObject.FindGameObjectWithTag("Player").transform;
+        lookAtReflection = GameObject.FindGameObjectWithTag("Reflection").transform;
+
     }
     void LateUpdate()
     {
-        
-        transform.position = new Vector3(lookAt.transform.position.x, lookAt.transform.position.y, -1);
-
+        if (GameManager.instance.followPlayer)
+        {
+            transform.position = new Vector3(lookAtPlayer.transform.position.x, lookAtPlayer.transform.position.y, -1);
+        }
+        else if(!GameManager.instance.followPlayer)
+        {
+            transform.position = new Vector3(lookAtReflection.transform.position.x, lookAtReflection.transform.position.y, -1);
+        }
     }
 
 

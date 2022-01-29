@@ -10,22 +10,25 @@ public class Player : Mover
     private string JUMPY_TAG = "JUMPY";
     private bool canJump = true;
     private Trigger trigger;
+    protected bool isMeMoving = true;
 
 
     protected void FixedUpdate()
     {
 
-       
-        moveButton = Input.GetAxisRaw("Horizontal");
-        jumpButton = Input.GetAxisRaw("Jump");
-        if (!inDialogue())
+        if (isMeMoving)
         {
-        Movement();
-        Jump();
-        }
-        else
-        {
-            rigidBody.velocity = new Vector3(0,0,0);
+            moveButton = Input.GetAxisRaw("Horizontal");
+            jumpButton = Input.GetAxisRaw("Jump");
+            if (!inDialogue())
+            {
+                Movement();
+                Jump();
+            }
+            else
+            {
+                rigidBody.velocity = new Vector3(0, 0, 0);
+            }
         }
 
         AnimationUpdate();
@@ -37,7 +40,6 @@ public class Player : Mover
 
 
     //Triggerowanie dialogów
-
     private bool inDialogue()
     {
         if(trigger != null)
@@ -90,6 +92,15 @@ public class Player : Mover
         {
             canJump = true;
         }
+    }
+
+    public void ToggleMoving(bool isMoving)
+    {
+        isMeMoving = isMoving;
+    }
+    public void ToggleMoving()
+    {
+        isMeMoving = !isMeMoving;
     }
 
     protected void Movement()
