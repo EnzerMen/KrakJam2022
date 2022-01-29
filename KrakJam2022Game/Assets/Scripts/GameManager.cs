@@ -7,13 +7,21 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public Player player;
+    public GameObject character;
+    public GameObject cameraPref;
 
-    [SerializeField]
-    private GameObject character;
-    public int [] keyes = new int[10];
+    public bool [] hasAKey = new bool[10]; //czy mam klucz
+    public Vector3[] doorCoords = new Vector3[10]; //coordy po przejsciu przez drzwi
+    public int usedDoorID; //ktore drzwi zostaly uzyte
+   
+    
+    
+    //bedzie do wywalenia
+    private Vector3 coordy = new Vector3(15, 1, 0);
 
     private void Awake()
     {
+        //CreateDictionary();
         if(GameManager.instance != null)
         {
             Destroy(gameObject);
@@ -41,7 +49,20 @@ public class GameManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "kuchnia")
-            Instantiate(character);
+        if (scene.name == "SampleScene")
+        {
+            Instantiate(character, coordy, player.transform.rotation);
+        }
+        else
+        {
+            Instantiate(character, doorCoords[usedDoorID], player.transform.rotation); //spawn postaci w coordach zaleznych od drzwi
+        }
+
+        
+
+
+
+        Instantiate(cameraPref);
     }
+
 }

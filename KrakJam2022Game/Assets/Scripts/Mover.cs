@@ -12,7 +12,7 @@ public class Mover : MonoBehaviour
     [SerializeField]
     protected float movementForce = 7f;
     [SerializeField]
-    protected float jumpForce = 6.5f;
+    protected float jumpForce = 12f;
     [SerializeField]
     protected float airMovementForce = 0.3f;
     [SerializeField]
@@ -31,6 +31,7 @@ public class Mover : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
         baseScale = transform.localScale;
+        Debug.Log(name);
     }
 
 
