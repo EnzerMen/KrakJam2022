@@ -14,18 +14,23 @@ public class Player : Mover
 
     protected void FixedUpdate()
     {
-        moveButton = Input.GetAxisRaw("Horizontal");
-        jumpButton = Input.GetAxisRaw("Jump");
 
+        
+            moveButton = Input.GetAxisRaw("Horizontal");
+            jumpButton = Input.GetAxisRaw("Jump");
         if (!inDialogue())
         {
-   
         Movement();
         Jump();
+        }
+        else
+        {
+            rigidBody.velocity = new Vector3(0,0,0);
+        }
 
         AnimationUpdate();
 
-        }
+        
     }
 
     //Triggerowanie dialogów
@@ -45,7 +50,7 @@ public class Player : Mover
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Dialogue")
+        if(collision.gameObject.tag == "DialogueActivated")
         {
             //Debug.Log("Hola2");
             trigger = collision.gameObject.GetComponent<Trigger>();
@@ -57,17 +62,17 @@ public class Player : Mover
         }
     }
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Dialogue")
+        if (collision.gameObject.tag == "DialogueTriggered")
         {
             Debug.Log("Hola2");
             trigger = collision.gameObject.GetComponent<Trigger>();
 
-                collision.gameObject.GetComponent<Trigger>().ActivateDialogue();
-            
+            collision.gameObject.GetComponent<Trigger>().ActivateDialogue();
+
         }
-    }*/
+    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
