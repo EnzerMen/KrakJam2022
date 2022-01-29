@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - JUMPY
-  - Dialogue
+  - DialogueActivated
+  - DialogueTriggered
   layers:
   - Default
   - TransparentFX
