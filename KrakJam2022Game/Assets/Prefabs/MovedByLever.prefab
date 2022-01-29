@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 63971714082178085}
   - component: {fileID: 63971714082178084}
   m_Layer: 0
-  m_Name: Movable
+  m_Name: MovedByLever
   m_TagString: JUMPY
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
