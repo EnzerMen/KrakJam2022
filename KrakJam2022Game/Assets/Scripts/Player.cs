@@ -9,6 +9,7 @@ public class Player : Mover
     private float jumpButton;
     private string JUMPY_TAG = "JUMPY";
     private bool canJump = true;
+    private Trigger trigger;
 
 
     protected void FixedUpdate()
@@ -16,15 +17,68 @@ public class Player : Mover
         moveButton = Input.GetAxisRaw("Horizontal");
         jumpButton = Input.GetAxisRaw("Jump");
 
+        if (!inDialogue())
+        {
+   
         Movement();
         Jump();
 
         AnimationUpdate();
+
+        }
+    }
+
+    //Triggerowanie dialogów
+
+    private bool inDialogue()
+    {
+        if(trigger != null)
+        {
+            Debug.Log(trigger.DialogueActive());
+            return trigger.DialogueActive();
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Dialogue")
+        {
+            //Debug.Log("Hola2");
+            trigger = collision.gameObject.GetComponent<Trigger>();
+
+             if (Input.GetButton("Interact"))
+            {
+                collision.gameObject.GetComponent<Trigger>().ActivateDialogue();
+             }
+        }
+    }
+
+    /*private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Dialogue")
+        {
+            Debug.Log("Hola2");
+            trigger = collision.gameObject.GetComponent<Trigger>();
+
+                collision.gameObject.GetComponent<Trigger>().ActivateDialogue();
+            
+        }
+    }*/
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        trigger = null;
     }
 
     protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(JUMPY_TAG))
+        
+
+            if (collision.gameObject.CompareTag(JUMPY_TAG))
         {
             canJump = true;
         }
