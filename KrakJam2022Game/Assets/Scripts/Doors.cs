@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Doors : Collidable
 {
-    public string sceneName;
     public int requiredItemID;
-    [SerializeField] private string collectedByWho = "Player";
+    [SerializeField] private string collectedByTag = "Player";
+    [SerializeField] private GameObject teleportTo;
+    [SerializeField] private GameObject playerObject;
     //doors
     protected override void OnCollide(Collider2D coll)
     {
-        if (coll.CompareTag(collectedByWho))
+        if (coll.CompareTag(collectedByTag))
         {
-            //tp player
-           
-
-            if (GameManager.instance.hasAnItem[requiredItemID])
+            if (Input.GetAxisRaw("Interact") == 1)
             {
-                GameManager.instance.usedDoorID = requiredItemID;
-                UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+                if (GameManager.instance.hasAnItem[requiredItemID])
+                {
+                    playerObject.transform.position = teleportTo.transform.position;
+                }
+                else
+                {
+                    Debug.Log("nie ma klucza");
+                }
             }
+            
         }
     }
-
-
-
 
 }

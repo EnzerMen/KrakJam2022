@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+        
     }
 
 
@@ -49,18 +50,6 @@ public class GameManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "SampleScene")
-        {
-            Instantiate(character, coordy, player.transform.rotation);
-        }
-        else
-        {
-            Instantiate(character, doorCoords[usedDoorID], player.transform.rotation); //spawn postaci w coordach zaleznych od drzwi
-        }
-
-        
-
-
 
         Instantiate(cameraPref);
     }

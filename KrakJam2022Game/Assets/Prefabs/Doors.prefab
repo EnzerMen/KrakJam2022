@@ -136,5 +136,8 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  sceneName: kuchnia
-  keyID: 1
+  sceneName: 
+  requiredItemID: 0
+  collectedByTag: Player
+  teleportTo: {fileID: 0}
+  playerObject: {fileID: 0}

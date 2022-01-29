@@ -15,9 +15,9 @@ public class Player : Mover
     protected void FixedUpdate()
     {
 
-        
-            moveButton = Input.GetAxisRaw("Horizontal");
-            jumpButton = Input.GetAxisRaw("Jump");
+       
+        moveButton = Input.GetAxisRaw("Horizontal");
+        jumpButton = Input.GetAxisRaw("Jump");
         if (!inDialogue())
         {
         Movement();
@@ -30,8 +30,11 @@ public class Player : Mover
 
         AnimationUpdate();
 
+
+        
         
     }
+
 
     //Triggerowanie dialogów
 
@@ -123,6 +126,5 @@ public class Player : Mover
             canJump = false;
         }
     }
-
 
 }
