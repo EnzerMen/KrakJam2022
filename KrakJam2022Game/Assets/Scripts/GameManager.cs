@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Reflection reflection;
     public GameObject character;
     public GameObject cameraPref;
+    public GameObject endPopUp;
     public FloatingTextManager floatingTextManager;
     public PopUpItemManager popUpItemManager;
     public bool canSwitch = false;
@@ -20,6 +21,12 @@ public class GameManager : MonoBehaviour
 
     public bool [] hasAnItem = new bool[20]; //lista przedmiotów mam/niemam
 
+
+    public void TheEnd()
+    {
+        endPopUp.SetActive(true);
+        ToggleTime(false);
+}
 
     public void Debugg()
     {
