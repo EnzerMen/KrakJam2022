@@ -33,7 +33,7 @@ public class Doors : Collidable
                 }
                 else
                 {
-                    GameManager.instance.ShowText("these doors are locked", 36, Color.white, playerObject.transform.gameObject.transform.position+new Vector3(0,2,0), Vector3.zero, 2.0f);
+                    GameManager.instance.ShowText("these doors are locked", 36, Color.white, playerObject.transform.gameObject.transform.position+new Vector3(0,3.5f,0), Vector3.zero, 2.0f);
                     Debug.Log("nie ma klucza");
                 }
             }

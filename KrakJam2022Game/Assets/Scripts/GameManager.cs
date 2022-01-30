@@ -18,10 +18,13 @@ public class GameManager : MonoBehaviour
     public bool followPlayer = true;
 
 
-    public bool [] hasAnItem = new bool[10]; //lista przedmiotów mam/niemam
+    public bool [] hasAnItem = new bool[20]; //lista przedmiotów mam/niemam
 
 
-
+    public void Debugg()
+    {
+        Debug.Log("Debug");
+    }
     public void FixedUpdate()
     {
         #region switch
