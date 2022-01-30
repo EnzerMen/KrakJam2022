@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 4001e33aefc367343ab0315cc79b83c9
   - enabled: 1
+    path: Assets/Scenes/Levels/Hub.unity
+    guid: 95859443ff5ac7b41b56ea9d3802bdd4
+  - enabled: 1
     path: Assets/Scenes/Others/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Levels/kuchnia.unity
-    guid: 7e8ba311948b8fc4798fb5c5900fa99d
   m_configObjects: {}
