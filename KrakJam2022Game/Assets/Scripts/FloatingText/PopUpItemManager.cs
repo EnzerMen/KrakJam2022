@@ -22,6 +22,7 @@ public class PopUpItemManager : MonoBehaviour
 
     public void Hide()
     {
+        GameManager.instance.ToggleTime(true);
         container.SetActive(false);
     }
 

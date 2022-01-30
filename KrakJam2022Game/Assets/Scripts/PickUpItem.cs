@@ -19,7 +19,7 @@ public class PickUpItem : Collectable
             GameManager.instance.hasAnItem[itemID] = true;
             Destroy(gameObject);
             GameManager.instance.ShowItem(text, fontSize, textColor, image); ;
-            GameManager.instance.ToggleTime();
+            GameManager.instance.ToggleTime(false);
         }
 
     }

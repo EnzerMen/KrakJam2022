@@ -16,22 +16,11 @@ public class GameManager : MonoBehaviour
     public bool canSwitch = false;
     private bool justSwitched = false;
     public bool followPlayer = true;
-    public bool timeRuns = true;
 
 
     public bool [] hasAnItem = new bool[10]; //lista przedmiotów mam/niemam
 
-    public void SwitchPlaces()
-    {
-        if (canSwitch)
-        {
-            player.ToggleMoving();
-            reflection.ToggleMoving();
-            followPlayer = !followPlayer;
-            Debug.Log("Switcherro");
-        }
 
-    }
 
     public void FixedUpdate()
     {
@@ -54,31 +43,35 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         //CreateDictionary();
-        if(GameManager.instance != null)
+        if (GameManager.instance != null)
         {
             Destroy(gameObject);
             return;
         }
 
         instance = this;
-        DontDestroyOnLoad(gameObject);
-        
+        //DontDestroyOnLoad(gameObject);
+
     }
 
-    public void ToggleTime()
+    public void ToggleTime(bool timeRuns)
     {
         if (timeRuns)
         {
-            Time.timeScale = 0;
-            timeRuns = false;
+            Time.timeScale = 1;
         }
         else
         {
-            Time.timeScale = 1;
-            timeRuns = true;
+            Time.timeScale = 0;
         }
     }
 
+    public void LoadMainMenu()
+    {
+        ToggleTime(true);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+
+    }
 
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
     {
@@ -102,8 +95,21 @@ public class GameManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-
+        Time.timeScale = 1;
         Debug.Log("SceneLoaded");
+    }
+
+
+    public void SwitchPlaces()
+    {
+        if (canSwitch)
+        {
+            player.ToggleMoving();
+            reflection.ToggleMoving();
+            followPlayer = !followPlayer;
+            Debug.Log("Switcherro");
+        }
+
     }
 
 }

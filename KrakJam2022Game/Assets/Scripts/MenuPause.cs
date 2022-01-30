@@ -19,7 +19,7 @@ public class MenuPause : MonoBehaviour
             if (!doneOnce)
             {
                 anim.SetTrigger("showPause");
-                GameManager.instance.ToggleTime();
+                GameManager.instance.ToggleTime(false);
                 doneOnce = true;
 
             }
@@ -30,17 +30,6 @@ public class MenuPause : MonoBehaviour
             
          
         
-    }
-
-    public void onContinue()
-    {
-        //wylacz time diliation
-    }
-
-
-    public void onMenu()
-    {
-        //wczytaj mape menu
     }
     
 }

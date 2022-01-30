@@ -9,6 +9,8 @@ public class Doors : Collidable
     [SerializeField] private GameObject playerObject;
     [SerializeField] private GameObject reflectionTeleportTo;
     [SerializeField] private GameObject reflectionObject;
+    public bool moveIndepended = true;
+
 
     private bool justClicked = false;
     //doors
@@ -23,7 +25,11 @@ public class Doors : Collidable
                 {
                     playerObject.transform.position = playerTeleportTo.transform.position;
                     reflectionObject.transform.position = reflectionTeleportTo.transform.position;
-                    reflectionObject.GetComponent<Reflection>().ToggleMoving(false);
+                    if (moveIndepended)
+                    {
+                        reflectionObject.GetComponent<Reflection>().ToggleMoving(false);
+                    }
+                    
                 }
                 else
                 {
