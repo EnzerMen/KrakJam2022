@@ -20,13 +20,13 @@ public class CameraMotor : MonoBehaviour
 
         if (GameManager.instance.followPlayer)
         {
-            newLookAt = new Vector3(lookAtPlayer.transform.position.x, lookAtPlayer.transform.position.y, -1);
+            newLookAt = new Vector3(lookAtPlayer.transform.position.x, lookAtPlayer.transform.position.y + 5, -1);
             transform.position = newLookAt;
 
         }
         else if(!GameManager.instance.followPlayer)
         {
-            newLookAt = new Vector3(lookAtReflection.transform.position.x, lookAtReflection.transform.position.y, -1);
+            newLookAt = new Vector3(lookAtReflection.transform.position.x, lookAtReflection.transform.position.y + 4, -1);
             transform.position = newLookAt;
         }
     }
