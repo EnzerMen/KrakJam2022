@@ -9,7 +9,7 @@ public class PickUpItem : Collectable
     public string text = "PLACEHOLDER TEXT";
     public int fontSize = 36;
     public Color textColor = Color.black;
-    public Image image;
+    public Texture2D image;
 
     protected override void OnCollect()
     {
@@ -18,7 +18,7 @@ public class PickUpItem : Collectable
             collected = true;
             GameManager.instance.hasAnItem[itemID] = true;
             Destroy(gameObject);
-            GameManager.instance.ShowItem(text, fontSize, textColor, image); ;
+           // GameManager.instance.ShowItem(text, fontSize, textColor, image); ;
             GameManager.instance.ToggleTime(false);
         }
 
