@@ -21,22 +21,23 @@ public class PlaceItem : Collidable
     {
         if (coll.CompareTag(collectedByTag))
         {
-            if (Input.GetButtonDown("Interact") && !justClicked)
+/*            if (Input.GetButtonDown("Interact") && !justClicked)
             {
-                justClicked = true;
+                justClicked = true;*/
                 if (GameManager.instance.hasAnItem[RequiredItemID])
                 {
                     triggerForReflection.SetActive(true);
+                    GetComponent<BoxCollider2D>().enabled = false;
                 }
-                else
-                {
-                    GameManager.instance.ShowText("i am missing something", 36, Color.white, playerObject.transform.position + new Vector3(0, 2, 0), new Vector3(0, 2, 0), 1.5f);
-                }
-            }
-            else if (Input.GetButtonUp("Interact"))
+            /* else
             {
-                justClicked = false;
+                GameManager.instance.ShowText("i am missing something", 36, Color.white, playerObject.transform.position + new Vector3(0, 2, 0), new Vector3(0, 2, 0), 1.5f);
             }
+       }
+        else if (Input.GetButtonUp("Interact"))
+        {
+            justClicked = false;
+        }*/
         }
 
     }
