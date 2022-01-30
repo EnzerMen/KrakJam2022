@@ -30,7 +30,8 @@ public class Doors : Collidable
                     GameManager.instance.ShowText("these doors are locked", 36, Color.white, playerObject.transform.gameObject.transform.position+new Vector3(0,2,0), Vector3.zero, 2.0f);
                     Debug.Log("nie ma klucza");
                 }
-            }else if(Input.GetAxisRaw("Interact") == 0)
+            }
+            else if(Input.GetAxisRaw("Interact") == 0)
             {
                 justClicked = false;
             }

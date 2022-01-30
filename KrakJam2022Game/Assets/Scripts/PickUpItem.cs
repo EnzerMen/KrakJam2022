@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TriggerItem : Collectable
+public class PickUpItem : Collectable
 {
     public int itemID;
     public string text = "PLACEHOLDER TEXT";
