@@ -15,7 +15,6 @@ public class Player : Mover
 
     protected void FixedUpdate()
     {
-
         if (isMeMoving)
         {
             moveButton = Input.GetAxisRaw("Horizontal");
@@ -65,9 +64,9 @@ public class Player : Mover
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "DialogueTriggered")
+        if (collision.gameObject.tag == "DialogueTriggered" /*&& collision.gameObject.layer == interactLayer*/)
         {
-            Debug.Log("Hola2");
+            Debug.Log(collision.gameObject.layer);
             trigger = collision.gameObject.GetComponent<Trigger>();
 
             collision.gameObject.GetComponent<Trigger>().ActivateDialogue();
