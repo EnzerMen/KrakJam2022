@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7245861530523235904}
   - component: {fileID: 7245861530523235905}
   m_Layer: 10
-  m_Name: Znajdzka
+  m_Name: PickableItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
