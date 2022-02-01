@@ -18,11 +18,11 @@ public class Player : Mover
         if (isMeMoving)
         {
             moveButton = Input.GetAxisRaw("Horizontal");
-            jumpButton = Input.GetAxisRaw("Jump");
+            //jumpButton = Input.GetAxisRaw("Jump");
             if (!inDialogue())
             {
                 Movement();
-                Jump();
+                //Jump();
             }
             else
             {
