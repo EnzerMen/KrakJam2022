@@ -6584,7 +6584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7232751686895646116, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
       propertyPath: m_Size.y
-      value: 11.275545
+      value: 3.6930785
       objectReference: {fileID: 0}
     - target: {fileID: 7232751686895646116, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
       propertyPath: m_Offset.x
@@ -6592,7 +6592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7232751686895646116, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
       propertyPath: m_Offset.y
-      value: -2.2032576
+      value: -6.6995573
       objectReference: {fileID: 0}
     - target: {fileID: 7232751686895646116, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
@@ -6616,19 +6616,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7232751686895646118, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7232751686895646118, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7232751686895646118, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9
+      value: 189.2
       objectReference: {fileID: 0}
     - target: {fileID: 7232751686895646118, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -36.7
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7232751686895646124, guid: 2bda4421ea431c643aca404e7e47a610, type: 3}
       propertyPath: m_Enabled
@@ -11076,11 +11076,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8278162961033834398, guid: 3ea7eb2886c26e143b14820f31147d0b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.16
+      value: 1.06
       objectReference: {fileID: 0}
     - target: {fileID: 8278162961033834398, guid: 3ea7eb2886c26e143b14820f31147d0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.08
+      value: 6.32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea7eb2886c26e143b14820f31147d0b, type: 3}
@@ -16797,11 +16797,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1693104699, guid: 9634cc61ac666384dadbd7c12ae34bd9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.21
+      value: -16.474
       objectReference: {fileID: 0}
     - target: {fileID: 1693104699, guid: 9634cc61ac666384dadbd7c12ae34bd9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.742
+      value: 0.648
       objectReference: {fileID: 0}
     - target: {fileID: 1902939423, guid: 9634cc61ac666384dadbd7c12ae34bd9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17738,7 +17738,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.6230183, y: 0}
+  m_Offset: {x: 3.6230183, y: -8.479647}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -17749,7 +17749,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 59.89123, y: 1}
+  m_Size: {x: 59.89123, y: 17.959293}
   m_EdgeRadius: 0
 --- !u!1 &1470725754
 GameObject:
@@ -23942,11 +23942,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1693104699, guid: 9634cc61ac666384dadbd7c12ae34bd9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.229
+      value: 20.057
       objectReference: {fileID: 0}
     - target: {fileID: 1693104699, guid: 9634cc61ac666384dadbd7c12ae34bd9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8163
+      value: 0.722
       objectReference: {fileID: 0}
     - target: {fileID: 1902939423, guid: 9634cc61ac666384dadbd7c12ae34bd9, type: 3}
       propertyPath: m_LocalPosition.x

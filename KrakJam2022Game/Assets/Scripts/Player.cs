@@ -21,12 +21,15 @@ public class Player : Mover
             //jumpButton = Input.GetAxisRaw("Jump");
             if (!inDialogue())
             {
+                GameManager.instance.canSwitch = true;
                 Movement();
+                
                 //Jump();
             }
             else
             {
                 rigidBody.velocity = new Vector3(0, 0, 0);
+                GameManager.instance.canSwitch = false;
             }
         }
 
