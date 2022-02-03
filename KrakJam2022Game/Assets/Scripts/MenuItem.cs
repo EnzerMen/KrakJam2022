@@ -10,7 +10,7 @@ public class MenuItem : MonoBehaviour
     public Image myImage;
     public string itemName = "wpisz opis przedmiotu";
     public int itemID;
-    public Color grayTint = new Color(0.9f,0.9f,0.9f,0.5f);
+    public Color grayTint = new Color(0f,0f,0f,0.5f);
 
     void LateUpdate()
     {
